@@ -1,0 +1,4 @@
+#!/usr/bin/env python3
+import sys, os
+if "Username" in sys.argv[1]: print(os.environ.get('GIT_USER'))
+elif "Password" in sys.argv[1]: print(os.environ.get('GIT_PASS'))

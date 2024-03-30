@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% if config['DEBUG'] %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/w3.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/all.min.css') }}">
+    <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+    {% else %}
+    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% endif %}
+    <script>
+        function open(page) {
+            $('main>:not(button)').slideUp(() => {
+                $('#' + page).slideDown()
+            })
+        }
+    </script>
+
+    <title>Avatar FTP</title>
+</head>
+
+<body>
+    <header class="w3-container w3-black w3-padding">
+        <h3>Access Bender</h3>
+    </header>
+
+    <main class="w3-container">
+        <form id="upload" class="w3-container w3-section w3-padding w3-card-4" enctype="multipart/form-data" method="POST" action="/api/upload" target="_blank">
+            <h3>Upload</h3>
+            <input class="w3-input" type="file" name="file" placeholder="Chooz a file ..." />
+            <input class="w3-input" name="dest" placeholder="Destination Folder"/>
+            <input class="w3-check" type="checkbox" name="compressed"> Compressed
+            <br/>
+            <button class="w3-button w3-black">Submit</button>
+        </form>
+    </main>
+
+    <main class="w3-container">
+        <form id="shell" class="w3-container w3-section w3-padding w3-card-4" method="POST" action="/api/shell" target="_blank">
+            <h3>Shell</h3>
+            <input class="w3-input" name="shell" placeholder="$ ..."/>
+            <button class="w3-button w3-black">Run</button>
+        </form>
+    </main>
+
+    <main class="w3-container">
+        <form id="clone" class="w3-container w3-section w3-padding w3-card-4" method="POST" action="/api/clone" target="_blank">
+            <h3>Clone</h3>
+            <input class="w3-input" name="repo" placeholder="Repository URL"/>
+            <button class="w3-button w3-black">Clone</button>
+        </form>
+    </main>
+
+    <main class="w3-container">
+        <form id="commit" class="w3-container w3-section w3-padding w3-card-4" method="POST" action="/api/commit" target="_blank">
+            <h3>Commit</h3>
+            <input class="w3-input" name="path" placeholder="Path To Repo"/>
+            <button class="w3-button w3-black">Clone</button>
+        </form>
+    </main>
+
+
+</body>
+
+</html>
